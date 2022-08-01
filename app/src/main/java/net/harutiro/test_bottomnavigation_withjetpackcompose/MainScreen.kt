@@ -8,6 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -23,10 +24,21 @@ fun MainScreen() {
     val navController = rememberNavController()
 
     Scaffold (
+        topBar = { TopBar()},
         bottomBar = {BottomBar(navController = navController) }
     ){
         BottomNavGraph(navController = navController)
     }
+}
+
+
+@Composable
+fun TopBar(){
+    SmallTopAppBar (
+        title = {
+            Text(stringResource(id = R.string.app_name ))
+        }
+    )
 }
 
 
